@@ -20,7 +20,7 @@ void main() async {
         fr,
       ],
       path:
-          'https://my-json-server.typicode.com/alejandrogiubel/translations/languages',
+          'https://my-json-server.typicode.com/alejandrogiubel/translations',
       assetLoader: KeyAssetLoader(loadingTranslations),
       child: MyApp(loadingTranslations: loadingTranslations),
     ),

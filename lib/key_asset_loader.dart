@@ -11,16 +11,13 @@ class KeyAssetLoader extends AssetLoader {
   @override
   Future<Map<String, dynamic>> load(String path, Locale locale) async {
     loadingTranslations.value = true;
-    log('easy localization loader: load http $path');
-    log(locale.toLanguageTag());
-
     try {
-      var url = Uri.parse(path);
+      var url = Uri.parse('$path/${locale.toLanguageTag()}');
       final Map<String, dynamic> result = await http
           .get(url)
           .then((response) => json.decode(response.body.toString()));
       loadingTranslations.value = false;
-      return result[locale.toLanguageTag()];
+      return result;
     } catch (e) {
       loadingTranslations.value = false;
       //Catch network exceptions
